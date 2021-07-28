@@ -32,4 +32,11 @@ public class DemoApplication {
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
         return String.format("Hello %s!", name)
     }
+
+    @GetMapping("/")
+    public String myhello(@RequestParam(value = "name", defaultValue = "World") String name,
+                          @RequestParam(value = "profe", defaultValue = "Miguel") String profe)
+    {
+        return String.format("Hello %s, my new method is called %s!", profe, name)
+    }
 }
