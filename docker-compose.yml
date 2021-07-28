@@ -1,0 +1,8 @@
+version: "3.0"
+
+services:
+  hello-spring:
+    image: hello-spring:latest
+    build: .
+    ports:
+      - "7777:7777"
