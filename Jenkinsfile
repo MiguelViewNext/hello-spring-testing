@@ -19,6 +19,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                sh 'java -jar build/libs/hello-spring-0.0.1-SNAPSHOT.jar'
             }
         }
 
