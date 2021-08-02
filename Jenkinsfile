@@ -19,8 +19,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh "./gradlew test"
-                junit skipPublishingChecks: true, testResults: 'build/test-results/test/binary/TEST-com.example.hellospring.HelloSpringApplicationTests.xml'
+                sh './gradlew test'
+                junit skipPublishingChecks: true, testResults: '/build/test-results/test/binary/TEST-com.example.hellospring.HelloSpringApplicationTests.xml'
 
             }
         }
