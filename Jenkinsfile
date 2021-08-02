@@ -7,7 +7,8 @@ pipeline {
         stage('Test') {
             steps {
                  echo 'Testing..'
-                 sh './gradlew test'
+                 sh './gradlew clean test'
+                 //sh './gradlew test'
                  //archiveArtifacts artifacts: 'build/test-results/test/binary/*.xml'
                  junit skipPublishingChecks: true, testResults: 'build/test-results/test/TEST-*.xml'
 
