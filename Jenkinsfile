@@ -13,13 +13,14 @@ pipeline {
 
                  //sh './gradlew test'
                  //archiveArtifacts artifacts: 'build/test-results/test/binary/*.xml'
-                 post {
-                    always {
-                        junit skipPublishingChecks: true, testResults: 'build/test-results/test/TEST-*.xml'
-                    }
-                 }
+
                  //junit skipPublishingChecks: true, testResults: 'build/test-results/test/TEST-*.xml'
 
+            }
+            post {
+               aways {
+                     junit skipPublishingChecks: true, testResults: 'build/test-results/test/TEST-*.xml'
+               }
             }
         }
 
