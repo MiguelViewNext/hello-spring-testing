@@ -20,4 +20,10 @@ class HttpRequest {
         assertThat(this.restTemplate.getForObject("http://localhost:"+port+"/add?a=1&b=2", String.class))
                 .isEqualTo("3.0")
     }
+
+    @Test
+    public void hello() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:"+port+"/hello?name=Jesus", String.class))
+                .isEqualTo("Hello Jesus!")
+    }
 }
