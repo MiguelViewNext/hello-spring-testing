@@ -4,6 +4,16 @@ pipeline {
         ansiColor('xterm')
     }
     stages {
+        stage('Test') {
+            steps {
+                 echo 'Testing..'
+                 sh './gradlew test'
+                 //archiveArtifacts artifacts: 'build/test-results/test/binary/*.xml'
+                 junit skipPublishingChecks: true, testResults: '/build/test-results/test/TEST-com.example.hellospring.HelloSpringApplicationTests.xml'
+
+            }
+        }
+
         stage('Build') {
             steps {
 		        sh './gradlew assemble'
@@ -14,16 +24,6 @@ pipeline {
 		        	archiveArtifacts artifacts: 'build/libs/*.jar'
 		        }
 	        }*/
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                sh './gradlew test'
-                archiveArtifacts artifacts: 'build/test-results/test/binary/*.xml'
-                junit skipPublishingChecks: true, testResults: '/build/test-results/test/binary/TEST-com.example.hellospring.HelloSpringApplicationTests.xml'
-
-            }
         }
 
         stage('Deploy') {
