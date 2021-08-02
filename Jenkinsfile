@@ -6,8 +6,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-		        //sh "./gradlew assemble"
-		        sh 'docker-compose build'
+		        sh './gradlew assemble'
+		        //sh 'docker-compose build'
             }
             /*post {
         		success {
@@ -16,17 +16,20 @@ pipeline {
 	        }*/
         }
 
-        /*stage('Test') {
+        stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'java -jar build/libs/hello-spring-0.0.1-SNAPSHOT.jar'
+                sh "./gradlew test"
+                sh "junit skipPublishingChecks: true, testResults: '/build/test-results/test/binary/*.xml'"
+
             }
-        }*/
+        }
 
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh 'docker-compose up -d'
+                //sh 'docker-compose up -d'
+                sh 'java -jar build/libs/hello-spring-0.0.1-SNAPSHOT.jar'
             }
         }
     }
