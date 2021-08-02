@@ -20,7 +20,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 sh "./gradlew test"
-                sh "junit skipPublishingChecks: true, testResults: '/build/test-results/test/binary/*.xml'"
+                sh "junit skipPublishingChecks: true, testResults: 'build/test-results/test/binary/*.xml'"
 
             }
         }
