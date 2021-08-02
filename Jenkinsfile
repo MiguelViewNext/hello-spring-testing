@@ -18,7 +18,7 @@ pipeline {
 
             }
             post {
-               aways {
+               always {
                      junit skipPublishingChecks: true, testResults: 'build/test-results/test/TEST-*.xml'
                }
             }
