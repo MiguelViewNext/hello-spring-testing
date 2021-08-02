@@ -31,7 +31,7 @@ pipeline {
             steps {
                 echo 'Deploying....'
                 //sh 'docker-compose up -d'
-                sh 'java -jar build/libs/hello-spring-0.0.1-SNAPSHOT.jar'
+                //sh 'java -jar build/libs/hello-spring-0.0.1-SNAPSHOT.jar'
             }
         }
     }
