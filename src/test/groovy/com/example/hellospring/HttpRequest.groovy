@@ -18,6 +18,6 @@ class HttpRequest {
     @Test
     public void canAdd() throws Exception {
         assertThat(this.restTemplate.getForObject("http://localhost:"+port+"/add?a=1&b=2", String.class))
-                .isEqualTo(expected: {"expected"="3.0"})
+                .isEqualTo("3.0")
     }
 }
