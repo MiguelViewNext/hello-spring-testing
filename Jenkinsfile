@@ -43,5 +43,12 @@ pipeline {
                 //sh 'java -jar build/libs/hello-spring-0.0.1-SNAPSHOT.jar'
             }
         }
+        stage('gitlab') {
+            steps {
+                 echo 'Notify GitLab'
+                 updateGitlabCommitStatus name: 'build', state: 'pending'
+                 updateGitlabCommitStatus name: 'build', state: 'success'
+            }
+        }
     }
 }
