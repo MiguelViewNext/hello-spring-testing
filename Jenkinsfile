@@ -21,10 +21,26 @@ pipeline {
                always {
                      junit skipPublishingChecks: true, testResults: 'build/test-results/test/TEST-*.xml'
                      jacoco execPattern: 'build/jacoco/*.exec'
+                     //sh './gradlew check pmdMain'
                }
             }
         }
-
+        stage('QA') {
+            steps {
+                withGradle {
+                    sh './gradlew check'
+                }
+            }
+            post {
+                always {
+                    recordIssues {
+                        tools: [
+                            pmdParser (pattern: 'build/reports/pmd/*.xml')
+                        ]
+                    }
+                }
+            }
+        }
         stage('Build') {
             steps {
 		        sh './gradlew assemble'
