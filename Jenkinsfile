@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 pipeline {
     agent any
     options {
@@ -33,9 +35,9 @@ pipeline {
             }
             post {
                 always {
-                    recordIssues {
+                    recordIssues (
                         tools: [pmdParser (pattern: 'build/reports/pmd/*.xml')]
-                    }
+                    )
                 }
             }
         }
