@@ -2,7 +2,7 @@ version: "3.0"
 
 services:
   hello-spring:
-    image: hello-spring:latest
+    image: hello-spring-testing:latest
     build: .
     ports:
       - "7777:7777"
