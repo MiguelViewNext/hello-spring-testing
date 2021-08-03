@@ -20,6 +20,7 @@ pipeline {
             post {
                always {
                      junit skipPublishingChecks: true, testResults: 'build/test-results/test/TEST-*.xml'
+                     jacoco execPattern: 'build/jacoco/*.exec'
                }
             }
         }
