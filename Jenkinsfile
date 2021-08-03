@@ -48,8 +48,8 @@ pipeline {
 
         stage('Build') {
             steps {
-		        sh './gradlew assemble'
-		        //sh 'docker-compose build'
+		        //sh './gradlew assemble'
+		        sh 'docker-compose build'
             }
             /*post {
         		success {
