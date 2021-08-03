@@ -51,11 +51,19 @@ pipeline {
 		        //sh './gradlew assemble'
 		        sh 'docker-compose build'
             }
-            /*post {
+            post {
         		success {
-		        	archiveArtifacts artifacts: 'build/libs/*.jar'
+		        	//archiveArtifacts artifacts: 'build/libs/*.jar'
+                    //sh 'trivy image hello-spring-testing:latest'
 		        }
-	        }*/
+	        }
+        }
+
+        stage('Security') {
+            steps {
+                echo 'Security analysis...'
+                sh 'trivy image --format=json --output=trivy-image.json hello-spring-testing:latest'
+            }
         }
 
         stage('Deploy') {
