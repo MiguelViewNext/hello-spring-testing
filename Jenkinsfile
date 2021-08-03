@@ -27,6 +27,7 @@ pipeline {
                }
             }
         }
+
         stage('QA') {
             steps {
                 withGradle {
@@ -36,11 +37,15 @@ pipeline {
             post {
                 always {
                     recordIssues (
-                        tools: [pmdParser (pattern: 'build/reports/pmd/*.xml')]
+                        tools: [
+                            pmdParser (pattern: 'build/reports/pmd/*.xml'),
+                            spotBugs (pattern: 'build/reports/spotbugs/*.xml')
+                        ]
                     )
                 }
             }
         }
+
         stage('Build') {
             steps {
 		        sh './gradlew assemble'

@@ -33,4 +33,7 @@ jacocoTestReport {
     }
 }
 
+spotbugs {
+    ignoreFailures = true
+}
 
