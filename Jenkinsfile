@@ -51,12 +51,12 @@ pipeline {
 		        //sh './gradlew assemble'
 		        sh 'docker-compose build'
             }
-            post {
-        		success {
+            //post {
+        		//success {
 		        	//archiveArtifacts artifacts: 'build/libs/*.jar'
                     //sh 'trivy image hello-spring-testing:latest'
-		        }
-	        }
+		      //  }
+	        //}
         }
 
         stage('Security') {
